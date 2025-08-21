@@ -134,7 +134,7 @@ const ListBoxPage = () => {
           icon="download" 
           primary={true} 
           onClick={() => console.log('Export button clicked!')}
-          style={{ marginBottom: '20px' }}
+          style={{ marginBottom: '21px' }}
         >
           Export Data
         </Button>
