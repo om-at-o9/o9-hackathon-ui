@@ -1,0 +1,10 @@
+.page-container {
+  display: flex;
+  height: calc(100vh - 50px); /* Full height minus navbar */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
