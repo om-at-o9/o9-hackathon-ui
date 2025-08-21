@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link to="/listbox" style={{ textDecoration: 'none', color: 'inherit' }}>ListBox Demo</Link>
           </li>
           <li>
-            <Link to="/counter" style={{ textDecoration: 'none', color: 'inherit' }}>Counter Demo</Link>
+            <Link to="/counter" style={{ textDecoration: 'none', color: 'inherit' }}>Counter Game</Link>
           </li>
         </ul>
       </AppBarSection>
