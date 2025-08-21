@@ -144,7 +144,7 @@ const ListBoxPage = () => {
           <div className="listbox-column">
             <h3>Employees</h3>
             <ListBox
-              style={{ height: 400, width: '100%' }}
+              style={{ height: 405, width: '100%' }}
               data={state.employees}
               textField="name"
               selectedField={SELECTED_FIELD}
