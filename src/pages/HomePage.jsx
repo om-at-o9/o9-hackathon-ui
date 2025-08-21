@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div style={{ textAlign: 'center', padding: '50px' }}>
       <h1>Welcome to the o9 Hackathon!</h1>
-      <p>This is a prototype of a GenAI-powered Developer Assistant.</p>
+
       <Button primary={true} onClick={() => navigate('/listbox')}>
         Go to Demo
       </Button>
