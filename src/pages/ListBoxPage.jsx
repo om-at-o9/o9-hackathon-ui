@@ -38,11 +38,14 @@ const ListBoxPage = () => {
     }
   ]);
 
+  const [selectedContext, setSelectedContext] = useState('');
+
   // Callback from inspector hook when element is selected
   const handleElementSelected = (descriptor) => {
-    addMessage(`Context set to: ${descriptor}`, 'bot-context');
-  };
-
+    const contextMessage = `Context set to: ${descriptor}`;
+    addMessage(contextMessage, 'bot-context');
+    setSelectedContext(descriptor); // Save the context
+};
   // Use custom hook for inspection
   const { startInspection } = useInspector({ onElementSelected: handleElementSelected });
 
@@ -52,21 +55,32 @@ const ListBoxPage = () => {
   };
 
   // Send message handler (simulated bot response)
-  const handleSendMessage = (userText) => {
+  const handleSendMessage = async (userText) => {
     addMessage(userText, 'user');
+    addMessage('Analyzing request...', 'bot');
 
-    setTimeout(() => {
-      addMessage('Thinking...', 'bot');
+    try {
+        const response = await fetch('http://localhost:3001/api/modify-code', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                prompt: userText,
+                context: selectedContext // Send the saved context
+            }),
+        });
 
-      setTimeout(() => {
-        setMessages(prev => prev.slice(0, -1)); // Remove 'Thinking...'
-        addMessage(
-          `This is a simulated response about: "${userText}". In a real app, I would analyze the code context and provide a real answer.`,
-          'bot'
-        );
-      }, 1500);
-    }, 500);
-  };
+        const result = await response.json();
+
+        // In the next steps, we'll handle displaying the result.
+        // For now, let's just log it.
+        console.log(result);
+        addMessage(`AI Suggestion: ${result.explanation}`, 'bot');
+
+    } catch (error) {
+        console.error('Error modifying code:', error);
+        addMessage('Sorry, something went wrong.', 'bot');
+    }
+};
 
   // Kendo ListBox handlers
   const handleItemClick = (event, dataField, connectedField) => {
@@ -135,6 +149,7 @@ const ListBoxPage = () => {
           primary={true} 
           onClick={() => console.log('Export button clicked!')}
           style={{ marginBottom: '21px' }}
+          data-source-loc="src/pages/ListBoxPage.jsx:148"
         >
           Export Data
         </Button>
