@@ -13,7 +13,7 @@ const Navbar = () => {
       </AppBarSection>
       <AppBarSpacer />
       <AppBarSection>
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '20px', margin: 0, paddingRight: '15px' }}>
+        <ul style={{ display: 'flex', listStyle: 'none', gap: '22px', margin: 0, paddingRight: '15px' }}>
           <li>
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link>
           </li>
