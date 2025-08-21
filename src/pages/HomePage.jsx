@@ -10,7 +10,7 @@ const HomePage = () => {
       <h1>Welcome to the o9 Hackathon!</h1>
 
       <Button primary={true} onClick={() => navigate('/listbox')}>
-        Go to Demo
+        Go to Demo and Explore Features
       </Button>
     </div>
   );
