@@ -16,7 +16,7 @@ const CounterPage = () => {
             </div>
             <div
                 style={{ padding: '2rem', border: '1px solid #ccc', cursor: 'pointer', textAlign: 'center' }}
-                onClick={() => setMulCount(mulCount * 2)}
+                onClick={() => setMulCount(mulCount / 2)}
             >
                 <div>Multiply by 2</div>
                 <div>{mulCount}</div>
